@@ -17,11 +17,28 @@ LED_INVERT     = False   # True to invert the signal (when using NPN transistor 
 
 # Define functions which animate LEDs in various ways.
 def clock(strip, color, wait_ms=5000):
+
+
+        
+        color4 = 0
+        
+        colorFile = configparser.ConfigParser()
+        colorFile.sections()
+        colorFile.read('color.ini')
+        DEFAULT = colorFile['COLOR']
+        colorFile = (DEFAULT["ccolor"])
+        colorFile = colorFile.split(",")
+        color0 = colorFile[0]
+        color1 = colorFile[1]
+        color2 = colorFile[2]
+        color = (Color(int(color0), int(color1), int(color2)))
+        print (color)
+
+
+
         
         mi = datetime.now().strftime('%M')
         hour = datetime.now().strftime('%I')
-        
-
         config = configparser.ConfigParser()
         config.sections()
 
@@ -63,6 +80,7 @@ def clock(strip, color, wait_ms=5000):
 
         #Es ist
         strip.setPixelColor(4, color)
+        #strip.setPixelColor(4, (255, 0, 0))
         strip.setPixelColor(5, color)
         strip.setPixelColor(7, color)
         strip.setPixelColor(8, color)
@@ -253,8 +271,8 @@ def clock(strip, color, wait_ms=5000):
                 except:
                         print ("fuenf als Wort no value 4") 
 
-                 
-        
+
+
         if (mi[1:] == "1") or (mi[1:] == "6"):
                 strip.setPixelColor(0, color)
                 
@@ -289,14 +307,12 @@ def clock(strip, color, wait_ms=5000):
 
 
 
-# Main program logic follows:
+# Main program:
 if __name__ == '__main__':
-	# Create NeoPixel object with appropriate configuration.
+	
 	strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS)
-	# Intialize the library (must be called once before other functions).
 	strip.begin()
 
 	print ('Press Ctrl-C to quit.')
 	while True:
-		clock(strip, Color(0, 0, 255))  # Blue wipe
-
+		clock(strip, Color(255, 0, 0))  # rot wipe
