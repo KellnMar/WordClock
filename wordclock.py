@@ -45,29 +45,29 @@ def clock(strip, color, wait_ms=5000):
         config.read('deutsch.ini')
         DEFAULT = config['DEFAULT']
         print ("##########################################")
-        print ("Stunde " + hour)
-        print ("minute " + mi)
+        print ("HOUR " + hour)
+        print ("MIN " + mi)
 
         hourint = int(hour)
 
-        #plus eine stunde
+        #plus 1 hour
         if int(mi) >= 20 and hourint <= 8:
                
                 hour = int(hour) + 1
                 x = "0"
                 hour = ((x) + str(hour))
-                print ("Stunde plus eins gleich kliener 8 " +hour)
+                print ("Hour plus 1 smaller 8:00 " +hour)
        
         if int(mi) >= 20 and hourint >= 9 and hourint <= 11:
                
                 hour = int(hour) + 1
                 hour = (str(hour))
-                print ("Stunde plus eins nach 9 " +hour)
+                print ("Hour plus 1 past 9 " +hour)
  
         if int(mi) >= 20 and hourint == 12:
                
                 hour = ("01")
-                print ("Stunde plus eins nach 9 " +hour)
+                print ("Hour plus 1 past 9 " +hour)
 
         hour = (DEFAULT[hour])
         h = hour.split(",")
@@ -78,15 +78,14 @@ def clock(strip, color, wait_ms=5000):
 
 
 
-        #Es ist
+        #It is
         strip.setPixelColor(4, color)
-        #strip.setPixelColor(4, (255, 0, 0))
         strip.setPixelColor(5, color)
         strip.setPixelColor(7, color)
         strip.setPixelColor(8, color)
         strip.setPixelColor(9, color)
 
-        # Volle Stunden anzeigen aus ini file
+        # show complete hour 
         
         try:
                 strip.setPixelColor(int(h[0]), color)
@@ -115,7 +114,7 @@ def clock(strip, color, wait_ms=5000):
                 print ("")
 
 
-        # ab hier beginnt vor
+        # start with to
         if int(mi) in range (20,30) or int(mi) in range (45,60):
                 fvor = ("vor")
                 fvor = (DEFAULT[fvor])
@@ -140,7 +139,7 @@ def clock(strip, color, wait_ms=5000):
 
 
 
-        # Ab hier beginnt nach
+        # start with past
         if int(mi) in range (35,45) or int(mi) in range (5,15):
                 fnach = ("nach")
                 fnach = (DEFAULT[fnach])
@@ -164,7 +163,7 @@ def clock(strip, color, wait_ms=5000):
                 except:
                         print ("vor no value 4") 
         
-        # ab hier beginnt halb
+        # start with half
         for a in range (20,45):
                 halb = ("halb")
                 halb = (DEFAULT[halb])
@@ -191,7 +190,7 @@ def clock(strip, color, wait_ms=5000):
                                 print ("halb no value 4")
 
 
-        # fuenf minuten als Wort anzeigen
+        # show 5Min as word
         
         if int(mi) in range (5,10) or int(mi) in range (35,40) or int(mi) in range (25,30) or int(mi) in range (55,60):
                 ffuenf = ("fuenf")
@@ -218,7 +217,7 @@ def clock(strip, color, wait_ms=5000):
                             
                                 
 
-        # zehn minuten als Wort anzeigen
+        # show 10min as word
         
         if int(mi) in range (10,15) or int(mi) in range (40,45) or int(mi) in range (20,25) or int(mi) in range (50,55):
                 fzehn = ("zehn")
@@ -246,7 +245,7 @@ def clock(strip, color, wait_ms=5000):
 
 
 
-        # viertel als Wort anzeigen
+        # show quarter
         
         if int(mi) in range (15,20) or int(mi) in range (45,50):
                 fviertel = ("viertel")
@@ -295,7 +294,7 @@ def clock(strip, color, wait_ms=5000):
 
 
 
-                #strip.setPixelColor(3, Color(255,255,0))
+                
 
 
                 
