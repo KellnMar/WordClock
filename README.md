@@ -1,4 +1,15 @@
 "# WordClock" 
+
+Update software
+
+    sudo apt-get update
+    
+Install necessary packets
+    
+    sudo apt-get install gcc make build-essential python-dev git scons swig
+    
+    sudo reboot
+
 installing Python 3.6 on Raspberry PI
 
     sudo apt-get update
